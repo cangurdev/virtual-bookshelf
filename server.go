@@ -13,13 +13,11 @@ func main() {
 	app := fiber.New(fiber.Config{
 		Views: engine,
 	})
+	app.Static("/", "./assets/images")
 
-	app.Static("/assets", "./public")
-
-	//api := app.Group("/api", handler.Index) // /
-	app.Get("/", handler.Index)            // /login
+	app.Get("/", handler.Index)            // /
 	app.Get("/register", handler.Register) // /register
-	app.Get("/home", handler.Home) // Home
+	app.Get("/login", handler.Login)       // /login
 
 	app.Listen(":3000")
 }
