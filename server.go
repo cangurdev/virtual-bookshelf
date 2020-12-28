@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/template/html"
+	"virtual-bookshelf/handler"
 )
 
 func main() {
@@ -12,11 +13,10 @@ func main() {
 	app := fiber.New(fiber.Config{
 		Views: engine,
 	})
-	app.Get("/", func(c *fiber.Ctx) error {
-		// Render index template
-		return c.Render("index", fiber.Map{
-			"Title": "Hello, World!",
-		})
-	})
+
+	//api := app.Group("/api", handler.Index) // /
+	app.Get("/", handler.Index)            // /login
+	app.Get("/register", handler.Register) // /register
+
 	app.Listen(":3000")
 }
