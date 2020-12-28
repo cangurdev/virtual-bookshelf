@@ -1,1 +1,5 @@
-module "virtual-bookshelf"
+module virtual-bookshelf
+
+go 1.15
+
+require github.com/gofiber/fiber/v2 v2.3.2 // indirect
