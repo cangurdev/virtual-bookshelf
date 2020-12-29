@@ -15,9 +15,10 @@ func main() {
 	})
 	app.Static("/", "./assets/images")
 
-	app.Get("/", handler.Index)            // /
-	app.Get("/register", handler.Register) // /register
-	app.Get("/login", handler.Login)       // /login
+	app.Get("/", handler.Index)                 // /
+	app.Get("/register", handler.GetRegister)   // /register
+	app.Get("/login", handler.Login)            // /login
+	app.Post("/register", handler.PostRegister) // /login
 
 	app.Listen(":3000")
 }
