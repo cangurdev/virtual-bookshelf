@@ -15,9 +15,12 @@ func main() {
 	})
 	app.Static("/", "./assets/images")
 
+	//app.Use(basicauth.New(basicauth.Config{}))
+
 	app.Get("/", handler.Index)                 // /
 	app.Get("/register", handler.GetRegister)   // /register
-	app.Get("/login", handler.Login)            // /login
+	app.Get("/login", handler.GetLogin)         // /login
+	app.Post("/login", handler.PostLogin)       // /login
 	app.Post("/register", handler.PostRegister) // /login
 
 	app.Listen(":3000")

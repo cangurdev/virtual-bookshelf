@@ -33,17 +33,17 @@
                                     </div>
                                 </div>
                             </div>
-                            <form>
+                            <form action="/login" method="POST">
                                 <div class="relative w-full mb-12">
                                     <label class="block text-gray-500 text-xs font-bold mb-1" style="font-family: 'Kodchasan'" for="grid-password">Email</label>
-                                    <input type="email" class="px-3 py-3 text-gray-700 bg-white rounded border-solid border border-gray-400 text-sm shadow focus:shadow-outline w-full" style="transition: all 0.15s ease 0s;">
+                                    <input type="email" name="email" class="px-3 py-3 text-gray-700 bg-white rounded border-solid border border-gray-400 text-sm shadow focus:shadow-outline w-full" style="transition: all 0.15s ease 0s;">
                                 </div>
                                 <div class="relative w-full mb-24">
                                     <label class="block text-gray-500 text-xs font-bold mb-1" style="font-family: 'Kodchasan'" for="grid-password">Password</label>
-                                    <input type="password" class="px-3 py-3 text-gray-700 bg-white rounded border-solid border border-gray-400 text-sm shadow focus:shadow-outline w-full" style="transition: all 0.15s ease 0s;">
+                                    <input type="password" name="password" class="px-3 py-3 text-gray-700 bg-white rounded border-solid border border-gray-400 text-sm shadow focus:shadow-outline w-full" style="transition: all 0.15s ease 0s;">
                                 </div>
                                 <div class="text-center mt-6">
-                                    <a type="button" href="/" class="text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded-md shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full" type="button" style="transition: all 0.15s ease 0s; background-color: #274C4B">Login</a>
+                                    <button type="submit" class="text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded-md shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full" type="button" style="transition: all 0.15s ease 0s; background-color: #274C4B">Login</button>
                                 </div>
                             </form>
                         </div>
