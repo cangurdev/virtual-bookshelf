@@ -14,9 +14,9 @@ func Search(query string) []model.Book {
 		temp := model.Book{}
 		temp.Title = e.ChildText(".title")
 		temp.Subtitle = e.ChildText(".subtitle")
-		temp.Url = "http://www.gutenberg.org/" + e.ChildAttr("a[href]", "href")
+		temp.Url = "http://www.gutenberg.org" + e.ChildAttr("a[href]", "href")
 		temp.Description = get(temp.Url)
-		id := strings.Split(temp.Url, "/")[5]
+		id := strings.Split(temp.Url, "/")[4]
 		temp.Image = fmt.Sprintf("http://www.gutenberg.org/cache/epub/%s/pg%s.cover.medium.jpg", id, id)
 		books = append(books, temp)
 	})

@@ -1,22 +1,18 @@
 package middleware
 
 import (
+	"fmt"
 	"github.com/gofiber/fiber/v2"
-	"github.com/gofiber/fiber/v2/middleware/session"
 )
 
-func Auth(c *fiber.Ctx) error{
-	store := session.New()
-	sess, err := store.Get(c)
+func Auth(c *fiber.Ctx) error {
 
-	if err != nil {
-		panic(err)
-	}
-	defer sess.Save()
 	// Get value
-	name := sess.Get("name")
-	if name == nil{
+	name := c.Cookies("username")
+
+	fmt.Printf("Welcome %v\n", name)
+	if name != "" {
 		return c.Next()
 	}
-	return nil
+	return c.Redirect("/login")
 }

@@ -3,7 +3,7 @@ package handler
 import (
 	"fmt"
 	"github.com/gofiber/fiber/v2"
-	"github.com/gofiber/fiber/v2/middleware/session"
+	"time"
 	"virtual-bookshelf/database"
 )
 
@@ -13,8 +13,6 @@ func GetLogin(c *fiber.Ctx) error {
 	})
 }
 func PostLogin(c *fiber.Ctx) error {
-	store := session.New()
-
 	email := c.FormValue("email")
 	password := c.FormValue("password")
 	query := fmt.Sprintf("SELECT users.* FROM users WHERE email = '%s'", email)
@@ -28,23 +26,22 @@ func PostLogin(c *fiber.Ctx) error {
 	if err != nil {
 		fmt.Print(err)
 	}
-	if user1["password"] == password {
-		return c.Redirect("/")
-	}
+
 	err = user.Err()
 	if err != nil {
 		fmt.Print(err)
 	}
-	sess, err := store.Get(c)
-	if err != nil {
-		panic(err)
+
+	if user1["password"] == password {
+		c.Cookie(&fiber.Cookie{
+			Name:  "username",
+			Value: email,
+			// Set expiry date to the past
+			Expires:  time.Now().Add(24 * time.Hour),
+			HTTPOnly: true,
+			SameSite: "lax",
+		})
+		return c.Redirect("/home")
 	}
-
-	// Set key/value
-	sess.Set("name", email)
-	fmt.Printf("name %v", sess.Get("name"))
-	// save session
-	defer sess.Save()
-
-	return c.Redirect("/")
+	return c.Redirect("/login")
 }
