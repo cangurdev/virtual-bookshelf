@@ -9,15 +9,20 @@ import (
 
 func Search(query string) []model.Book {
 	var books []model.Book
+	urlPrefix := "http://www.gutenberg.org"
 	c := colly.NewCollector()
 	c.OnHTML(".booklink", func(e *colly.HTMLElement) {
 		temp := model.Book{}
+		imageUrl := e.ChildAttr(".cover-thumb", "src")
+		if imageUrl == "" {
+			return
+		}
 		temp.Title = e.ChildText(".title")
 		temp.Subtitle = e.ChildText(".subtitle")
-		temp.Url = "http://www.gutenberg.org" + e.ChildAttr("a[href]", "href")
-		temp.Description = get(temp.Url)
-		id := strings.Split(temp.Url, "/")[4]
-		temp.Image = fmt.Sprintf("http://www.gutenberg.org/cache/epub/%s/pg%s.cover.medium.jpg", id, id)
+		temp.Id = strings.Split(e.ChildAttr("a[href]", "href"), "/ebooks/")[1]
+		temp.Url = "/books/" + temp.Id
+		temp.Description = get(urlPrefix + "/ebooks/" + temp.Id)
+		temp.Image = strings.Replace(urlPrefix+imageUrl, "small", "medium", 1)
 		books = append(books, temp)
 	})
 	url := fmt.Sprintf("http://www.gutenberg.org/ebooks/search/?query=%v&submit_search=Go%21", query)
@@ -35,6 +40,7 @@ func get(url string) string {
 		description += e.ChildText("tr[datatype=\"xsd:date\"]")
 	})
 	c.Visit(url)
+
 	return description
 
 }
