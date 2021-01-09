@@ -20,7 +20,7 @@ func main() {
 	app.Static("/", "./assets/images")
 	app.Use(logger.New())
 	group := app.Group("/")
-	store := session.New(session.Config{CookiePath: "/",CookieDomain: "localhost"})
+	store := session.New(session.Config{CookiePath: "/", CookieDomain: "localhost"})
 
 	// This panic will be catch by the middleware
 	group.Get("/", func(c *fiber.Ctx) error {
@@ -38,7 +38,7 @@ func main() {
 		return c.Redirect("/login")
 	})
 	// Get methods
-	app.Get("/home",handler.Index)               // /
+	app.Get("/home", handler.Index)           // /
 	app.Get("/register", handler.GetRegister) // /register
 	app.Get("/login", handler.GetLogin)       // /login
 
@@ -76,9 +76,9 @@ func main() {
 			return c.Redirect("/home")
 		}
 		return c.Redirect("/login")
-	})                                          // /login
+	}) // /login
 	app.Post("/register", handler.PostRegister) // /register
-
+	app.Post("/home", handler.PostIndex)
 	// Listens server on port 3000
 	app.Listen(":3000")
 }

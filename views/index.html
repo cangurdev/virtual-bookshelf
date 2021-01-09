@@ -2,171 +2,90 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Kodchasan:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kodchasan:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
     <title>Guten Morgen - Home</title>
 </head>
 <body style="background-color: #F1EEED;">
-    <div class="container mx-auto pt-6">
-        <div class="flex items-center justify-between">
-            <div>
-                <p style="font-size: 36px; color: #F45D48; font-family: 'Kodchasan'; font-weight: 700;">Guten Morgen</p>
-            </div>
-            <div class="pt-2 relative mx-auto text-gray-600">
+<div class="container mx-auto pt-6">
+    <div class="flex items-center justify-between">
+        <div>
+            <p style="font-size: 36px; color: #F45D48; font-family: 'Kodchasan'; font-weight: 700;">Guten Morgen</p>
+        </div>
+        <div class="pt-2 relative mx-auto text-gray-600">
+            <form method="POST" action="/home">
+
                 <input class="bg-gray-300 h-10 px-5 pr-16 rounded-2xl text-sm focus:outline-none w-96"
-                       type="search" name="search" placeholder="Search" style="font-family: 'Kodchasan'; font-weight: 700;">
+                       type="search" name="query" placeholder="Search"
+                       style="font-family: 'Kodchasan'; font-weight: 700;">
                 <button type="submit" class="absolute right-0 top-0 mt-5 mr-4">
                     <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
-                         xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
-                         viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve"
+                         version="1.1" id="Capa_1" x="0px" y="0px"
+                         viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;"
+                         xml:space="preserve"
                          width="512px" height="512px">
                         <path
-                                d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z" />
+                                d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z"/>
                       </svg>
                 </button>
-            </div>
-            <div class="flex items-center relative space-x-2">
-                <a class="inline-block" href="/login" style="font-size: 24px; color: #F45D48; font-family: 'Kodchasan'; font-weight: 700;">Exit</a>
-                <svg class="inline-block" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-                     width="24" height="24"
-                     viewBox="0 0 171 171"
-                     style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,171.99219v-171.99219h171.99219v171.99219z" fill="none"></path><g fill="#f45d48"><path d="M35.625,21.375c-7.78807,0 -14.25,6.46193 -14.25,14.25v99.75c0,7.78807 6.46193,14.25 14.25,14.25h99.75c7.78807,0 14.25,-6.46193 14.25,-14.25v-99.75c0,-7.78807 -6.46193,-14.25 -14.25,-14.25zM35.625,35.625h99.75v39.79981l-23.4624,-23.46241l-10.07519,10.07519l16.3374,16.3374h-54.04981v14.25h54.04981l-16.3374,16.3374l10.07519,10.07519l23.4624,-23.4624v39.79981h-99.75z"></path></g></g></svg>
-            </div>
+            </form>
         </div>
-        <div class="pt-24">
-            <p class="underline mb-4 mt-16" style="font-size: 20px; font-family: 'Kodchasan'; font-weight: 700;">Welcome to your bookshelf</p>
-        </div>
-        <div class="grid gap-4 grid-cols-3">
-            <div class="flex bg-white shadow-lg rounded-lg mx-4 mb-12 border-4 border-gray-400 md:mx-auto max-w-md md:max-w-2xl ">
-                <div class="flex items-start px-4 py-6">
-                    <img class="w-32 h-40 object-cover mr-4 shadow object-fill" src="https://www.gutenberg.org/cache/epub/63787/pg63787.cover.medium.jpg" alt="avatar">
-                    <div class="">
-                        <div class="flex items-center justify-between">
-                            <h2 class="text-base text-gray-900 -mt-1" style="font-family: 'Kodchasan'; font-weight: 700;">The Adventures of Sherlock Holmes </h2>
-                        </div>
-                        <p class="text-xs text-gray-700" style="font-family: 'Kodchasan'; font-weight: 300;">Arthur Conen Doyle </p>
-                        <p class="mt-3 text-gray-700 text-sm">
-                            Lorem ipsum, dolor sit amet conse. Saepe optio minus rem dolor sit amet!
-                        </p>
-                        <div class="mt-4 flex justify-end">
-                            <div class="flex mr-2 text-gray-700 text-sm mr-3">
-                                <svg fill="none" viewBox="0 0 24 24"  class="w-8 h-8 mr-1" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="flex bg-white shadow-lg rounded-lg mx-4 mb-12 border-4 border-gray-400 md:mx-auto max-w-md md:max-w-2xl ">
-                <div class="flex items-start px-4 py-6">
-                    <img class="w-32 h-40 object-cover mr-4 shadow object-fill" src="https://www.gutenberg.org/cache/epub/63787/pg63787.cover.medium.jpg" alt="avatar">
-                    <div class="">
-                        <div class="flex items-center justify-between">
-                            <h2 class="text-base text-gray-900 -mt-1" style="font-family: 'Kodchasan'; font-weight: 700;">The Adventures of Sherlock Holmes </h2>
-                        </div>
-                        <p class="text-xs text-gray-700" style="font-family: 'Kodchasan'; font-weight: 300;">Arthur Conen Doyle </p>
-                        <p class="mt-3 text-gray-700 text-sm">
-                            Lorem ipsum, dolor sit amet conse. Saepe optio minus rem dolor sit amet!
-                        </p>
-                        <div class="mt-4 flex justify-end">
-                            <div class="flex mr-2 text-gray-700 text-sm mr-3">
-                                <svg fill="none" viewBox="0 0 24 24"  class="w-8 h-8 mr-1" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="flex bg-white shadow-lg rounded-lg mx-4 mb-12 border-4 border-gray-400 md:mx-auto max-w-md md:max-w-2xl ">
-                <div class="flex items-start px-4 py-6">
-                    <img class="w-32 h-40 object-cover mr-4 shadow object-fill" src="https://www.gutenberg.org/cache/epub/63787/pg63787.cover.medium.jpg" alt="avatar">
-                    <div class="">
-                        <div class="flex items-center justify-between">
-                            <h2 class="text-base text-gray-900 -mt-1" style="font-family: 'Kodchasan'; font-weight: 700;">The Adventures of Sherlock Holmes </h2>
-                        </div>
-                        <p class="text-xs text-gray-700" style="font-family: 'Kodchasan'; font-weight: 300;">Arthur Conen Doyle </p>
-                        <p class="mt-3 text-gray-700 text-sm">
-                            Lorem ipsum, dolor sit amet conse. Saepe optio minus rem dolor sit amet!
-                        </p>
-                        <div class="mt-4 flex justify-end">
-                            <div class="flex mr-2 text-gray-700 text-sm mr-3">
-                                <svg fill="none" viewBox="0 0 24 24"  class="w-8 h-8 mr-1" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="flex bg-white shadow-lg rounded-lg mx-4 mb-12 border-4 border-gray-400 md:mx-auto max-w-md md:max-w-2xl ">
-                <div class="flex items-start px-4 py-6">
-                    <img class="w-32 h-40 object-cover mr-4 shadow object-fill" src="https://www.gutenberg.org/cache/epub/63787/pg63787.cover.medium.jpg" alt="avatar">
-                    <div class="">
-                        <div class="flex items-center justify-between">
-                            <h2 class="text-base text-gray-900 -mt-1" style="font-family: 'Kodchasan'; font-weight: 700;">The Adventures of Sherlock Holmes </h2>
-                        </div>
-                        <p class="text-xs text-gray-700" style="font-family: 'Kodchasan'; font-weight: 300;">Arthur Conen Doyle </p>
-                        <p class="mt-3 text-gray-700 text-sm">
-                            Lorem ipsum, dolor sit amet conse. Saepe optio minus rem dolor sit amet!
-                        </p>
-                        <div class="mt-4 flex justify-end">
-                            <div class="flex mr-2 text-gray-700 text-sm mr-3">
-                                <svg fill="none" viewBox="0 0 24 24"  class="w-8 h-8 mr-1" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="flex bg-white shadow-lg rounded-lg mx-4 mb-12 border-4 border-gray-400 md:mx-auto max-w-md md:max-w-2xl ">
-                <div class="flex items-start px-4 py-6">
-                    <img class="w-32 h-40 object-cover mr-4 shadow object-fill" src="https://www.gutenberg.org/cache/epub/63787/pg63787.cover.medium.jpg" alt="avatar">
-                    <div class="">
-                        <div class="flex items-center justify-between">
-                            <h2 class="text-base text-gray-900 -mt-1" style="font-family: 'Kodchasan'; font-weight: 700;">The Adventures of Sherlock Holmes </h2>
-                        </div>
-                        <p class="text-xs text-gray-700" style="font-family: 'Kodchasan'; font-weight: 300;">Arthur Conen Doyle </p>
-                        <p class="mt-3 text-gray-700 text-sm">
-                            Lorem ipsum, dolor sit amet conse. Saepe optio minus rem dolor sit amet!
-                        </p>
-                        <div class="mt-4 flex justify-end">
-                            <div class="flex mr-2 text-gray-700 text-sm mr-3">
-                                <svg fill="none" viewBox="0 0 24 24"  class="w-8 h-8 mr-1" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="flex bg-white shadow-lg rounded-lg mx-4 mb-12 border-4 border-gray-400 md:mx-auto max-w-md md:max-w-2xl ">
-                <div class="flex items-start px-4 py-6">
-                    <img class="w-32 h-40 object-cover mr-4 shadow object-fill" src="https://www.gutenberg.org/cache/epub/63787/pg63787.cover.medium.jpg" alt="avatar">
-                    <div class="">
-                        <div class="flex items-center justify-between">
-                            <h2 class="text-base text-gray-900 -mt-1" style="font-family: 'Kodchasan'; font-weight: 700;">The Adventures of Sherlock Holmes </h2>
-                        </div>
-                        <p class="text-xs text-gray-700" style="font-family: 'Kodchasan'; font-weight: 300;">Arthur Conen Doyle </p>
-                        <p class="mt-3 text-gray-700 text-sm">
-                            Lorem ipsum, dolor sit amet conse. Saepe optio minus rem dolor sit amet!
-                        </p>
-                        <div class="mt-4 flex justify-end">
-                            <div class="flex mr-2 text-gray-700 text-sm mr-3">
-                                <svg fill="none" viewBox="0 0 24 24"  class="w-8 h-8 mr-1" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="flex items-center relative space-x-2">
+            <a class="inline-block" href="/login"
+               style="font-size: 24px; color: #F45D48; font-family: 'Kodchasan'; font-weight: 700;">Exit</a>
+            <svg class="inline-block" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                 width="24" height="24"
+                 viewBox="0 0 171 171"
+                 style=" fill:#000000;">
+                <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                   stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                   font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                   style="mix-blend-mode: normal">
+                    <path d="M0,171.99219v-171.99219h171.99219v171.99219z" fill="none"></path>
+                    <g fill="#f45d48">
+                        <path d="M35.625,21.375c-7.78807,0 -14.25,6.46193 -14.25,14.25v99.75c0,7.78807 6.46193,14.25 14.25,14.25h99.75c7.78807,0 14.25,-6.46193 14.25,-14.25v-99.75c0,-7.78807 -6.46193,-14.25 -14.25,-14.25zM35.625,35.625h99.75v39.79981l-23.4624,-23.46241l-10.07519,10.07519l16.3374,16.3374h-54.04981v14.25h54.04981l-16.3374,16.3374l10.07519,10.07519l23.4624,-23.4624v39.79981h-99.75z"></path>
+                    </g>
+                </g>
+            </svg>
         </div>
     </div>
+    <div class="pt-24">
+        <p class="underline mb-4 mt-16" style="font-size: 20px; font-family: 'Kodchasan'; font-weight: 700;">Welcome to
+            your bookshelf</p>
+    </div>
+    <div class="grid gap-4 grid-cols-3">
+        {{range .books}}
+        <div class="flex bg-white shadow-lg rounded-lg mx-4 mb-12 border-4 border-gray-400 md:mx-auto max-w-md md:max-w-2xl ">
+            <div class="flex items-start px-4 py-6">
+                <img class="w-32 h-40 object-cover mr-4 shadow object-fill"
+                     src={{.Image}} alt="avatar">
+                <div class="">
+                    <div class="flex items-center justify-between">
+                        <h2 class="text-base text-gray-900 -mt-1" style="font-family: 'Kodchasan'; font-weight: 700;">
+                            {{.Title}} </h2>
+                    </div>
+                    <p class="text-xs text-gray-700" style="font-family: 'Kodchasan'; font-weight: 300;">{{.Subtitle}} </p>
+                    <p class="mt-3 text-gray-700 text-sm">
+                        {{.Description}}
+                    </p>
+                    <div class="mt-4 flex justify-end">
+                        <div class="flex mr-2 text-gray-700 text-sm mr-3">
+                            <svg fill="none" viewBox="0 0 24 24" class="w-8 h-8 mr-1" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{end}}
+    </div>
+</div>
 </body>
 </html>
