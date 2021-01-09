@@ -25,7 +25,7 @@ func GetCluster() *gocb.Cluster {
 			Password: "password",
 		})
 	if err != nil {
-		return nil
+		fmt.Print(err)
 	}
 	return cluster
 }
