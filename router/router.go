@@ -7,14 +7,19 @@ import (
 )
 
 func SetupRoutes(app *fiber.App) {
-	// Get methods
-	app.Get("/home", middleware.Auth, handler.Index)
-	app.Get("/register", handler.GetRegister) // /register
-	app.Get("/login", handler.GetLogin)       // /login
-	app.Get("/logout", handler.Logout)
+	// Home
+	app.Get("/home", middleware.Auth, handler.Index)      // Home page
+	app.Post("/home", middleware.Auth, handler.PostIndex) // Handles search book operation
 
-	// Post methods
-	app.Post("/login", handler.PostLogin)       // /login
-	app.Post("/register", handler.PostRegister) // /register
-	app.Post("/home", middleware.Auth, handler.PostIndex)
+	// Register
+	app.Get("/register", handler.GetRegister)   // Register page
+	app.Post("/register", handler.PostRegister) // Handles register process
+
+	// Login
+	app.Get("/login", handler.GetLogin)   // Login page
+	app.Post("/login", handler.PostLogin) // Handles login process
+
+	// Logout
+	app.Get("/logout", handler.Logout) // Handles logout process
+
 }

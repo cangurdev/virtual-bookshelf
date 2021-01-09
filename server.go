@@ -13,6 +13,8 @@ func main() {
 	app := fiber.New(fiber.Config{
 		Views: engine,
 	})
+
+	// Serve files from "./assets/images" directory
 	app.Static("/", "./assets/images")
 
 	router.SetupRoutes(app)

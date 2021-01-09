@@ -34,9 +34,8 @@ func PostLogin(c *fiber.Ctx) error {
 
 	if user1["password"] == password {
 		c.Cookie(&fiber.Cookie{
-			Name:  "username",
-			Value: email,
-			// Set expiry date to the past
+			Name:     "username",
+			Value:    email,
 			Expires:  time.Now().Add(24 * time.Hour),
 			HTTPOnly: true,
 			SameSite: "lax",
