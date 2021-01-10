@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/template/html"
 	"virtual-bookshelf/router"
@@ -20,5 +21,8 @@ func main() {
 	router.SetupRoutes(app)
 
 	// Listens server on port 3000
-	app.Listen(":3000")
+	err := app.Listen(":3000")
+	if err != nil {
+		fmt.Print("There was an error occurred on listening port")
+	}
 }
