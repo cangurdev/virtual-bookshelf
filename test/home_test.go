@@ -30,5 +30,7 @@ func TestHomeTest(t *testing.T) {
 	body, _ := ioutil.ReadAll(resp.Body)
 
 	assert.Equal(t, string(body), "index page")
+}
+func TestGetBookTest(t *testing.T) {
 
 }
