@@ -16,13 +16,13 @@ func PostLogin(c *fiber.Ctx) error {
 	email := c.FormValue("email")
 	password := c.FormValue("password")
 	authService := service.NewAuthService(repository.NewAuthRepository())
-	err := authService.Login(email, password)
+	id, err := authService.Login(email, password)
 	if err != nil {
 		return c.Redirect("/login")
 	}
 	c.Cookie(&fiber.Cookie{
 		Name:     "username",
-		Value:    email,
+		Value:    id,
 		Expires:  time.Now().Add(24 * time.Hour),
 		HTTPOnly: true,
 		SameSite: "lax",

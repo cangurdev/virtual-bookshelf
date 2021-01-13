@@ -44,7 +44,6 @@
                  style=" fill:#000000;">
                 <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                    stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                   font-family="none" font-weight="none" font-size="none" text-anchor="none"
                    style="mix-blend-mode: normal">
                     <path d="M0,171.99219v-171.99219h171.99219v171.99219z" fill="none"></path>
                     <g fill="#f45d48">
@@ -79,14 +78,16 @@
                     <p class="mt-3 text-gray-700 text-sm">
                         {{.Description}}
                     </p>
-                    <div class="mt-4 flex justify-end">
-                        <div class="flex mr-2 text-gray-700 text-sm mr-3">
-                            <svg fill="none" viewBox="0 0 24 24" class="w-8 h-8 mr-1" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-                            </svg>
-                        </div>
-                    </div>
+                    <button class="mt-4 flex justify-end">
+                        <a href="/add?id={{.Id}}&url:{{.Url}}&image={{.Image}}&description={{.Description}}&title{{.Title}}&subtitle={{.Subtitle}}">
+                            <div class="flex mr-2 text-gray-700 text-sm mr-3">
+                                <svg fill="none" viewBox="0 0 24 24" class="w-8 h-8 mr-1" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                          d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                                </svg>
+                            </div>
+                        </a>
+                    </button>
                 </div>
             </div>
         </div>

@@ -23,9 +23,12 @@ func SetupRoutes(app *fiber.App) {
 	app.Get("/logout", handler.Logout) // Handles logout process
 
 	// Add book to bookshelf
-	app.Post("/add/:bookId", handler.AddBook)
+	app.Get("/add", handler.AddBook)
 
 	// Remove book from bookshelf
 	app.Post("/remove/:bookId", handler.RemoveBook)
+
+	// Read
+	//app.Get("/books/:bookId/pages/:pageNumber", handler.ReadBook)
 
 }
