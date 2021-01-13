@@ -9,20 +9,17 @@ import (
 	"log"
 	"strconv"
 	"time"
-	"virtual-bookshelf/database"
 	"virtual-bookshelf/model"
+	"virtual-bookshelf/repository"
 )
 
 func Login(c *fiber.Ctx) error {
 	email := c.FormValue("email")
 	password := c.FormValue("password")
-	query := fmt.Sprintf("SELECT users.* FROM users WHERE email = '%s'", email)
-	res, err := database.GetCluster().Query(query, nil)
-
+	res, err := repository.GetUser(email)
 	if err != nil {
-		fmt.Print("Error")
+		fmt.Print(err)
 	}
-
 	var user map[string]interface{}
 	err = res.One(&user)
 	if err != nil {
@@ -66,7 +63,7 @@ func Register(c *fiber.Ctx) error {
 	}
 	uuid := fmt.Sprintf("%x-%x-%x-%x-%x",
 		b[0:4], b[4:6], b[6:8], b[8:10], b[10:])
-	_, err = database.GetCollection().Insert(uuid, &document, nil)
+	err = repository.SaveUser(uuid, document)
 	if err != nil {
 		panic(err)
 	}
