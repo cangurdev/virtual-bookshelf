@@ -1,13 +1,22 @@
 package handler
 
 import (
+	"fmt"
 	"github.com/gofiber/fiber/v2"
+	"virtual-bookshelf/repository"
 	"virtual-bookshelf/service"
 )
 
+var bookService = service.NewBookService(repository.NewBookRepository())
+
 func Index(c *fiber.Ctx) error {
+	id := c.Cookies("username")
+	books, err := bookService.GetBookshelf(id)
+	if err != nil {
+		fmt.Print(err)
+	}
 	return c.Render("index", fiber.Map{
-		"Title": "Index",
+		"books": books,
 	})
 }
 func PostIndex(c *fiber.Ctx) error {

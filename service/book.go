@@ -10,6 +10,7 @@ type BookService interface {
 	AddBook(c *fiber.Ctx) error
 	ReadBook(id string) error
 	GetBook(id string) error
+	GetBookshelf(id string) ([]model.Book, error)
 }
 type bookService struct {
 }
@@ -42,4 +43,11 @@ func (*bookService) ReadBook(id string) error {
 func (*bookService) GetBook(id string) error {
 
 	return nil
+}
+func (*bookService) GetBookshelf(id string) ([]model.Book, error) {
+	books, err := bookRepository.GetBooks(id)
+	if err != nil {
+		return books, err
+	}
+	return books, nil
 }

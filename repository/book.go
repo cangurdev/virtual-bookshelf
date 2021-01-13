@@ -8,6 +8,7 @@ import (
 
 type BookRepository interface {
 	AddBook(email string, document model.Book) error
+	GetBooks(id string) ([]model.Book, error)
 }
 type bookRepository struct {
 }
@@ -29,6 +30,18 @@ func (*bookRepository) AddBook(id string, document model.Book) error {
 	_, err = database.GetCollection().Replace(id, doc, &gocb.ReplaceOptions{
 		Cas: updateGetResult.Cas()})
 	return nil
+}
+func (*bookRepository) GetBooks(id string) ([]model.Book, error) {
+	var doc model.User
+	updateGetResult, err := database.GetCollection().Get(id, nil)
+	if err != nil {
+		return nil, err
+	}
+	err = updateGetResult.Content(&doc)
+	if err != nil {
+		return nil, err
+	}
+	return doc.Books, nil
 }
 
 /*
