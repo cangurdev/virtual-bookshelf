@@ -7,6 +7,6 @@ type Book struct {
 	Subtitle    string
 	Image       string
 	Description string
-	File        []string
+	File        string
 	Bookmark    string
 }

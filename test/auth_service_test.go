@@ -37,6 +37,36 @@ func TestLoginInvalidUser(t *testing.T) {
 	assert.EqualError(t, err, "no result was available")
 	assert.Equal(t, "", id)
 }
+func TestLoginEmptyPasswordUser(t *testing.T) {
+	//Arrange
+	mockRepo := new(MockRepository)
+	testService := service.NewAuthService(mockRepo)
+	var user map[string]interface{}
+	mockRepo.On("GetUser").Return(user, errors.New("invalid user"))
+
+	//Act
+	id, err := testService.Login("deneme@gmail.com", "")
+
+	//Assert
+	mockRepo.AssertExpectations(t)
+	assert.EqualError(t, err, "invalid user")
+	assert.Equal(t, "", id)
+}
+func TestLoginEmptyEmailUser(t *testing.T) {
+	//Arrange
+	mockRepo := new(MockRepository)
+	testService := service.NewAuthService(mockRepo)
+	var user map[string]interface{}
+	mockRepo.On("GetUser").Return(user, errors.New("invalid user"))
+
+	//Act
+	id, err := testService.Login("", "123456")
+
+	//Assert
+	mockRepo.AssertExpectations(t)
+	assert.EqualError(t, err, "invalid user")
+	assert.Equal(t, "", id)
+}
 func TestRegisterUser(t *testing.T) {
 	//Arrange
 	mockRepo := new(MockRepository)

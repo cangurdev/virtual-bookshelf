@@ -12,15 +12,14 @@ func TestReadBook(t *testing.T) {
 	//Arrange
 	mockRepo := new(MockBookRepository)
 	bookService := service.NewBookService(mockRepo)
-	var result []string
-	mockRepo.On("GetBook").Return(result, nil)
 
 	//Act
-	_, err := bookService.ReadBook("1", "1")
+	result, err := bookService.ReadBook("1661")
 
 	//Assert
 	mockRepo.AssertExpectations(t)
 	assert.Equal(t, nil, err)
+	assert.NotNil(t, result)
 }
 func TestGetBookshelf(t *testing.T) {
 	//Arrange

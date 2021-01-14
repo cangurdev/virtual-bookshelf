@@ -3,7 +3,6 @@ package service
 import (
 	"fmt"
 	"github.com/gocolly/colly/v2"
-	"github.com/gofiber/fiber/v2"
 	"virtual-bookshelf/model"
 	"virtual-bookshelf/repository"
 )
@@ -17,30 +16,16 @@ func NewBookService(repository repository.BookRepository) BookService {
 	bookRepository = repository
 	return &bookService{}
 }
-func (*bookService) AddBook(c *fiber.Ctx) error {
-	book := model.Book{}
-	var err error
-	book.Id = c.Query("id")
-	book.Title = c.Query("title")
-	book.Subtitle = c.Query("subtitle")
-	book.Description = c.Query("description")
-	book.Image = c.Query("image")
-	book.Url = c.Query("url")
-	book.Bookmark = "1"
-	book.File, err = getBook(book.Id)
-	if err != nil {
-		return err
-	}
-	id := c.Cookies("username")
-	err = bookRepository.AddBook(id, book)
+func (*bookService) AddBook(id string, book model.Book) error {
+	err := bookRepository.AddBook(id, book)
 	if err != nil {
 		return err
 	}
 	return nil
 }
 
-func (*bookService) ReadBook(userId, id string) ([]string, error) {
-	book, err := bookRepository.GetBook(userId, id)
+func (*bookService) ReadBook(id string) ([]string, error) {
+	book, err := getBook(id)
 	if err != nil {
 		return nil, err
 	}

@@ -39,22 +39,6 @@ func (*bookRepository) GetBooks(id string) ([]model.Book, error) {
 	}
 	return doc.Books, nil
 }
-
-func (*bookRepository) GetBook(userId, id string) ([]string, error) {
-	var doc model.User
-	updateGetResult, err := database.GetCollection().Get(userId, nil)
-	if err != nil {
-		return nil, err
-	}
-	err = updateGetResult.Content(&doc)
-	books := doc.Books
-	for _, book := range books {
-		if book.Id == id {
-			return book.File, nil
-		}
-	}
-	return nil, err
-}
 func (*bookRepository) Bookmark(bookId, id, page string) error {
 	updateGetResult, err := database.GetCollection().Get(id, nil)
 	if err != nil {
