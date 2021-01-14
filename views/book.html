@@ -1,10 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Kodchasan:wght@300;400;500;600;700&display=swap"
+              rel="stylesheet">
+        <title>Book</title>
+    </head>
 </head>
 <body>
+{{range $element := .Book}}
+<p class="m-2">{{$element}}</p>
+{{end}}
 
+<form action="/bookmark?b={{.BookId}}&p={{.Page}}" method="post">
+    <input type="submit" value="Bookmark"
+           class="fixed bottom-2 right-0 mt-12 bg-blue-500 rounded-lg font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-600 mr-6">
+</form>
+<div class="flex justify-between mx-4">
+    <a href="http://127.0.0.1:3000/books/{{.BookId}}/pages/{{.previousPage}}">Backward</a>
+    <a href="http://127.0.0.1:3000/books/{{.BookId}}/pages/{{.nextPage}}">Forward</a>
+</div>
 </body>
 </html>

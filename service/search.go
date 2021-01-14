@@ -26,8 +26,10 @@ func Search(query string) []model.Book {
 		books = append(books, temp)
 	})
 	url := fmt.Sprintf("http://www.gutenberg.org/ebooks/search/?query=%v&submit_search=Go%21", query)
-	c.Visit(url)
-
+	err := c.Visit(url)
+	if err != nil {
+		return nil
+	}
 	return books
 }
 
@@ -39,8 +41,10 @@ func get(url string) string {
 		description += "\n"
 		description += e.ChildText("tr[datatype=\"xsd:date\"]")
 	})
-	c.Visit(url)
-
+	err := c.Visit(url)
+	if err != nil {
+		return ""
+	}
 	return description
 
 }

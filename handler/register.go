@@ -16,13 +16,13 @@ func PostRegister(c *fiber.Ctx) error {
 	email := c.FormValue("email")
 	password := c.FormValue("password")
 	authService := service.NewAuthService(repository.NewAuthRepository())
-	err := authService.Register(email, password)
+	id, err := authService.Register(email, password)
 	if err != nil {
 		return c.Redirect("/register")
 	}
 	c.Cookie(&fiber.Cookie{
 		Name:     "username",
-		Value:    email,
+		Value:    id,
 		Expires:  time.Now().Add(24 * time.Hour),
 		HTTPOnly: true,
 		SameSite: "lax",

@@ -29,6 +29,9 @@ func SetupRoutes(app *fiber.App) {
 	app.Post("/remove/:bookId", handler.RemoveBook)
 
 	// Read
-	//app.Get("/books/:bookId/pages/:pageNumber", handler.ReadBook)
+	app.Get("/books/:bookId/pages/:pageNumber", handler.ReadBook)
+
+	// Bookmark
+	app.Post("/bookmark", handler.Bookmark)
 
 }

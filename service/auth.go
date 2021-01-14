@@ -12,7 +12,7 @@ import (
 
 type AuthService interface {
 	Login(email, password string) (string, error)
-	Register(email, password string) error
+	Register(email, password string) (string, error)
 }
 type service struct {
 }
@@ -42,7 +42,7 @@ func (*service) Login(email, password string) (string, error) {
 	return string(id), nil
 }
 
-func (*service) Register(email, password string) error {
+func (*service) Register(email, password string) (string, error) {
 	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
 	if err != nil {
 		panic(err)
@@ -51,14 +51,14 @@ func (*service) Register(email, password string) error {
 	b := make([]byte, 16)
 	_, err = rand.Read(b)
 	if err != nil {
-		return err
+		return "", err
 	}
 	uuid := fmt.Sprintf("%x-%x-%x-%x-%x",
 		b[0:4], b[4:6], b[6:8], b[8:10], b[10:])
 	document := model.User{Id: uuid, Email: email, Password: string(hashedPassword)}
 	err = repo.SaveUser(uuid, document)
 	if err != nil {
-		return err
+		return "", err
 	}
-	return nil
+	return uuid, nil
 }

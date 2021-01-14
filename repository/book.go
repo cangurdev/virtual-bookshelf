@@ -9,6 +9,9 @@ import (
 type BookRepository interface {
 	AddBook(email string, document model.Book) error
 	GetBooks(id string) ([]model.Book, error)
+	GetBook(id, userId string) ([]string, error)
+	Bookmark(bookId, id, page string) error
+	RemoveBook(userId, bookId string) error
 }
 type bookRepository struct {
 }
@@ -44,18 +47,64 @@ func (*bookRepository) GetBooks(id string) ([]model.Book, error) {
 	return doc.Books, nil
 }
 
-/*
-func (*bookRepository) GetBook(id string) (model.Book, error) {
-	query := fmt.Sprintf("SELECT users.* FROM users WHERE email = '%s'", id)
-	res, err := database.GetCluster().Query(query, nil)
-	var book map[string]interface{}
-	err = res.One(&user)
+func (*bookRepository) GetBook(userId, id string) ([]string, error) {
+	var doc model.User
+	updateGetResult, err := database.GetCollection().Get(userId, nil)
 	if err != nil {
 		return nil, err
 	}
-	err = res.Err()
-	if err != nil {
-		return nil, err
+	err = updateGetResult.Content(&doc)
+	books := doc.Books
+	for _, book := range books {
+		if book.Id == id {
+			return book.File, nil
+		}
 	}
-	return user, err
-}*/
+	return nil, err
+}
+func (*bookRepository) Bookmark(bookId, id, page string) error {
+	updateGetResult, err := database.GetCollection().Get(id, nil)
+	if err != nil {
+		return err
+	}
+	var doc model.User
+	err = updateGetResult.Content(&doc)
+	if err != nil {
+		return err
+	}
+	books := doc.Books
+	for i := range books {
+		if books[i].Id == bookId {
+			books[i].Bookmark = page
+			break
+		}
+	}
+	doc.Books = books
+	_, err = database.GetCollection().Replace(id, doc, &gocb.ReplaceOptions{
+		Cas: updateGetResult.Cas()})
+	if err != nil {
+		return err
+	}
+	return nil
+}
+func (*bookRepository) RemoveBook(userId, bookId string) error {
+	var doc model.User
+	updateGetResult, err := database.GetCollection().Get(userId, nil)
+	if err != nil {
+		return err
+	}
+	err = updateGetResult.Content(&doc)
+	books := doc.Books
+	for _, book := range books {
+		if book.Id != bookId {
+			books = append(books, book)
+		}
+	}
+	doc.Books = books
+	_, err = database.GetCollection().Replace(userId, doc, &gocb.ReplaceOptions{
+		Cas: updateGetResult.Cas()})
+	if err != nil {
+		return err
+	}
+	return nil
+}
