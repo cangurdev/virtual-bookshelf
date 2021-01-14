@@ -10,10 +10,6 @@ import (
 	"virtual-bookshelf/repository"
 )
 
-type AuthService interface {
-	Login(email, password string) (string, error)
-	Register(email, password string) (string, error)
-}
 type service struct {
 }
 
@@ -39,7 +35,8 @@ func (*service) Login(email, password string) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	return string(id), nil
+	userId, _ := strconv.Unquote(string(id))
+	return userId, nil
 }
 
 func (*service) Register(email, password string) (string, error) {

@@ -8,13 +8,6 @@ import (
 	"virtual-bookshelf/repository"
 )
 
-type BookService interface {
-	AddBook(c *fiber.Ctx) error
-	ReadBook(userId, id string) ([]string, error)
-	GetBookshelf(id string) ([]model.Book, error)
-	Bookmark(bookId, id, page string) error
-	RemoveBook(userId, bookId string) error
-}
 type bookService struct {
 }
 

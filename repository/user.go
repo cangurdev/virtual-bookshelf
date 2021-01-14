@@ -6,10 +6,6 @@ import (
 	"virtual-bookshelf/model"
 )
 
-type AuthRepository interface {
-	GetUser(email string) (map[string]interface{}, error)
-	SaveUser(uuid string, document model.User) error
-}
 type repository struct {
 }
 
