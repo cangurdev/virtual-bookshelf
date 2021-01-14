@@ -14,6 +14,7 @@
     </head>
 </head>
 <body>
+{{template "navbar" .}}
 {{range $element := .Book}}
 <p class="m-2">{{$element}}</p>
 {{end}}
