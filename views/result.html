@@ -20,7 +20,7 @@
         {{range .Books}}
         <div class="flex bg-white shadow-lg rounded-lg mx-4 mb-12 border-4 border-gray-400 md:mx-auto max-w-md md:max-w-2xl ">
             <div class="flex items-start px-4 py-6">
-                <a href="books/{{.Id}}/pages/{{.Bookmark}}">
+                <a href="{.Url}}">
                     <img class="w-32 h-40 object-cover mr-4 shadow object-fill"
                          src={{.Image}} alt="avatar">
                 </a>
@@ -38,9 +38,10 @@
                         {{.Description}}
                     </p>
                     <button class="mt-4 flex justify-end">
-                        <a href="/remove/{{.Id}}" }>
+                        <a href="/add?id={{.Id}}&url:{{.Url}}&image={{.Image}}&description={{.Description}}&title{{.Title}}&subtitle={{.Subtitle}}"
+                           }>
                             <div class="flex mr-2 text-gray-700 text-sm mr-3">
-                                <svg fill="red" viewBox="0 0 24 24" class="w-8 h-8 mr-1" stroke="red">
+                                <svg fill="none" viewBox="0 0 24 24" class="w-8 h-8 mr-1" stroke="red">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                           d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
                                 </svg>

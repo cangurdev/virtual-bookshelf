@@ -94,8 +94,8 @@ func (*bookRepository) RemoveBook(userId, bookId string) error {
 		return err
 	}
 	err = updateGetResult.Content(&doc)
-	books := doc.Books
-	for _, book := range books {
+	var books []model.Book
+	for _, book := range doc.Books {
 		if book.Id != bookId {
 			books = append(books, book)
 		}
