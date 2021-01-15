@@ -25,28 +25,35 @@ func TestGetBookshelf(t *testing.T) {
 	//Arrange
 	mockRepo := new(MockBookRepository)
 	bookService := service.NewBookService(mockRepo)
-	var result []model.Book
-	mockRepo.On("GetBooks").Return(result, nil)
+	var res []model.Book
+	var book model.Book
+	book.Title = "Sherlock"
+	book.Id = "11"
+	book.Subtitle = "arthur conan doyle"
+	res = append(res, book)
+	mockRepo.On("GetBooks").Return(res, nil)
 
 	//Act
-	_, err := bookService.GetBookshelf("1")
+	result, err := bookService.GetBookshelf("1")
 
 	//Assert
 	mockRepo.AssertExpectations(t)
 	assert.Equal(t, nil, err)
+	assert.NotNil(t, result)
 }
 func TestGetBookshelfOfInvalidId(t *testing.T) {
 	mockRepo := new(MockBookRepository)
 	bookService := service.NewBookService(mockRepo)
-	var result []model.Book
-	mockRepo.On("GetBooks").Return(result, errors.New("invalid id"))
+	var res []model.Book
+	mockRepo.On("GetBooks").Return(res, errors.New("invalid id"))
 
 	//Act
-	_, err := bookService.GetBookshelf("1")
+	result, err := bookService.GetBookshelf("1")
 
 	//Assert
 	mockRepo.AssertExpectations(t)
 	assert.EqualError(t, err, "invalid id")
+	assert.Nil(t, result)
 }
 func TestBookmark(t *testing.T) {
 	//Arrange

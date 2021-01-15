@@ -7,10 +7,18 @@ import (
 )
 
 func TestSearchService(t *testing.T) {
-	result := service.Search("sherlock")
+	//Arrange
+	query := "sherlock"
+	//Act
+	result := service.Search(query)
+	//Assert
 	assert.NotNil(t, result)
 }
 func TestEmptySearchResult(t *testing.T) {
-	result := service.Search("netflix")
+	//Arrange
+	query := "netflix"
+	//Act
+	result := service.Search(query)
+	//Assert
 	assert.Nil(t, result)
 }
