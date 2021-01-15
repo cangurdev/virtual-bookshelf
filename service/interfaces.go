@@ -11,7 +11,7 @@ type BookService interface {
 	Bookmark(bookId, id, page string) error
 	RemoveBook(userId, bookId string) error
 }
-type AuthService interface {
+type UserService interface {
 	Login(email, password string) (string, error)
 	Register(email, password string) (string, error)
 }

@@ -9,7 +9,7 @@ import (
 type repository struct {
 }
 
-func NewAuthRepository() AuthRepository {
+func NewUserRepository() AuthRepository {
 	return &repository{}
 }
 func (*repository) GetUser(email string) (map[string]interface{}, error) {

@@ -15,7 +15,7 @@ func GetLogin(c *fiber.Ctx) error {
 func PostLogin(c *fiber.Ctx) error {
 	email := c.FormValue("email")
 	password := c.FormValue("password")
-	authService := service.NewAuthService(repository.NewAuthRepository())
+	authService := service.NewUserService(repository.NewUserRepository())
 	id, err := authService.Login(email, password)
 	if err != nil {
 		return c.Redirect("/login")

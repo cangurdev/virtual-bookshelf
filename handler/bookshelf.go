@@ -37,12 +37,23 @@ func ReadBook(c *fiber.Ctx) error {
 	bookId := c.Params("bookId")
 	page, _ := strconv.Atoi(c.Params("pageNumber"))
 	book, err := bookService.ReadBook(bookId)
+	if page > len(book)/10+1 {
+		url := fmt.Sprintf("/books/%s/pages/%v", bookId, len(book)/10+1)
+		return c.Redirect(url)
+	}
+	if page < 1 {
+		url := fmt.Sprintf("/books/%s/pages/%v", bookId, 1)
+		return c.Redirect(url)
+	}
 	if err != nil {
 		return err
 	}
 	nextPage := page + 1
 	previousPage := page - 1
 	book = book[(page*10)-9 : (page * 10)]
+	if page <= 1 {
+		previousPage = 1
+	}
 	return c.Render("book", fiber.Map{
 		"Book":         book,
 		"Page":         page,

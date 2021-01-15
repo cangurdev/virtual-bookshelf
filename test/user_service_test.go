@@ -10,7 +10,7 @@ import (
 func TestLoginUSer(t *testing.T) {
 	//Arrange
 	mockRepo := new(MockRepository)
-	testService := service.NewAuthService(mockRepo)
+	testService := service.NewUserService(mockRepo)
 	user := map[string]interface{}{"id": "123", "email": "can@gmail.com", "password": "$2a$10$rINQfxKohoAq74Rj7eSD.O1PY2fMu48CXeyYT9mQLw.h3SGkOjDzi"}
 	mockRepo.On("GetUser").Return(user, nil)
 
@@ -25,7 +25,7 @@ func TestLoginUSer(t *testing.T) {
 func TestLoginInvalidUser(t *testing.T) {
 	//Arrange
 	mockRepo := new(MockRepository)
-	testService := service.NewAuthService(mockRepo)
+	testService := service.NewUserService(mockRepo)
 	var user map[string]interface{}
 	mockRepo.On("GetUser").Return(user, errors.New("no result was available"))
 
@@ -40,7 +40,7 @@ func TestLoginInvalidUser(t *testing.T) {
 func TestLoginEmptyPasswordUser(t *testing.T) {
 	//Arrange
 	mockRepo := new(MockRepository)
-	testService := service.NewAuthService(mockRepo)
+	testService := service.NewUserService(mockRepo)
 	var user map[string]interface{}
 	mockRepo.On("GetUser").Return(user, errors.New("invalid user"))
 
@@ -55,7 +55,7 @@ func TestLoginEmptyPasswordUser(t *testing.T) {
 func TestLoginEmptyEmailUser(t *testing.T) {
 	//Arrange
 	mockRepo := new(MockRepository)
-	testService := service.NewAuthService(mockRepo)
+	testService := service.NewUserService(mockRepo)
 	var user map[string]interface{}
 	mockRepo.On("GetUser").Return(user, errors.New("invalid user"))
 
@@ -70,7 +70,7 @@ func TestLoginEmptyEmailUser(t *testing.T) {
 func TestRegisterUser(t *testing.T) {
 	//Arrange
 	mockRepo := new(MockRepository)
-	testService := service.NewAuthService(mockRepo)
+	testService := service.NewUserService(mockRepo)
 	mockRepo.On("SaveUser").Return(nil)
 
 	//Act
@@ -84,7 +84,7 @@ func TestRegisterUser(t *testing.T) {
 func TestRegisterEmptyPasswordUser(t *testing.T) {
 	//Arrange
 	mockRepo := new(MockRepository)
-	testService := service.NewAuthService(mockRepo)
+	testService := service.NewUserService(mockRepo)
 	mockRepo.On("SaveUser").Return(errors.New("invalid user"))
 
 	//Act
@@ -97,7 +97,7 @@ func TestRegisterEmptyPasswordUser(t *testing.T) {
 func TestRegisterEmptyEmailUser(t *testing.T) {
 	//Arrange
 	mockRepo := new(MockRepository)
-	testService := service.NewAuthService(mockRepo)
+	testService := service.NewUserService(mockRepo)
 	mockRepo.On("SaveUser").Return(errors.New("invalid user"))
 
 	//Act
@@ -110,7 +110,7 @@ func TestRegisterEmptyEmailUser(t *testing.T) {
 func TestRegisterEmptyUser(t *testing.T) {
 	//Arrange
 	mockRepo := new(MockRepository)
-	testService := service.NewAuthService(mockRepo)
+	testService := service.NewUserService(mockRepo)
 	mockRepo.On("SaveUser").Return(errors.New("invalid user"))
 
 	//Act

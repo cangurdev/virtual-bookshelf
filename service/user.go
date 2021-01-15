@@ -15,7 +15,7 @@ type service struct {
 
 var repo repository.AuthRepository
 
-func NewAuthService(repository repository.AuthRepository) AuthService {
+func NewUserService(repository repository.AuthRepository) UserService {
 	repo = repository
 	return &service{}
 }
