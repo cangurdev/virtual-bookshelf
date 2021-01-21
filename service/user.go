@@ -42,7 +42,7 @@ func (*service) Login(email, password string) (string, error) {
 func (*service) Register(email, password string) (string, error) {
 	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
 	if err != nil {
-		panic(err)
+		return "", err
 	}
 	// Generating uuid
 	b := make([]byte, 16)

@@ -7,18 +7,20 @@
     </head>
 </head>
 <body>
+<div class="container">
 {{template "navbar" .}}
-<div class="flex justify-between m-4" style="color:#f45d48">
+<div class="flex justify-between mx-48 mt-16 text-2xl font-bold" style="color:#f45d48">
     <a href="http://127.0.0.1:3000/books/{{.BookId}}/pages/{{.previousPage}}">Backward</a>
     <a href="http://127.0.0.1:3000/books/{{.BookId}}/pages/{{.nextPage}}">Forward</a>
 </div>
 {{range $element := .Book}}
-<p class="m-2">{{$element}}</p>
+<p class="mx-48 my-4">{{$element}}</p>
 {{end}}
 
 <form action="/bookmark?b={{.BookId}}&p={{.Page}}" method="post">
     <input type="submit" value="Bookmark" style="background-color: #f45d48"
            class="fixed bottom-2 right-0 mt-12 rounded-lg font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-600 mr-6">
 </form>
+</div>
 </body>
 </html>
